@@ -11,10 +11,10 @@
 int main(int argc, char *argv[])
 {
   if(argc<2)
-  {
-     std::cout << "2 arguments required : Image + radius"<<std::endl;
+    {
+     std::cout << "3 arguments required : InputImage + OutputImage + radius"<<std::endl;
      return EXIT_FAILURE;
-  }
+    }
 
   unsigned int radius = 2;
   if (argc>2)
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
   structuringElement.CreateStructuringElement();
 
   //Define erode filter
-  typedef itk::BinaryErodeImageFilter <ImageType, ImageType, StructuringElementType> BinaryErodeImageFilterType;
+  typedef itk::BinaryErodeImageFilter <ImageType, ImageType,  StructuringElementType> BinaryErodeImageFilterType;
   BinaryErodeImageFilterType::Pointer erodeFilter = BinaryErodeImageFilterType::New();
   erodeFilter->SetInput(reader->GetOutput());
   erodeFilter->SetKernel(structuringElement);
